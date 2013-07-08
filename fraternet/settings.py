@@ -124,6 +124,11 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    #Fraternet Apps
+    'main',
+    #Other Apps
+    'south',
+
 )
 
 # A sample logging configuration. The only tangible logging
@@ -154,3 +159,20 @@ LOGGING = {
         },
     }
 }
+
+
+
+#Fraternet Settings
+FRATERNET_EMAIL_DOMAIN = 'rose-hulman.edu'
+
+AUTH_USER_MODEL = 'main.Profile'
+
+
+###############################################################################
+# Import local settings (override)
+###############################################################################
+try:
+    from local_settings import *
+except ImportError:
+    pass
+
