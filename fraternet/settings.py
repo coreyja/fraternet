@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'main',
     #Other Apps
     'south',
+    'crispy_forms',
 
 )
 
