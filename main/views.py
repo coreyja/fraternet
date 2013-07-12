@@ -7,4 +7,4 @@ def dashboard_view(request):
     if request.user.is_authenticated():
         return render_to_response('dashboard.html', context_instance=RequestContext(request))
     else:
-        return render_to_response('static/landing.html')
+        return render_to_response('static/landing.html', context_instance=RequestContext(request))
