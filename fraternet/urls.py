@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
+
 from main.forms import LoginForm
 
-# Uncomment the next two lines to enable the admin:
+from main.views import *
+
 from django.contrib import admin
 admin.autodiscover()
 
@@ -21,5 +23,5 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'} , name='logout'),
 
     #Homepage/Landing Page. Will probably be dynamic later
-    url(r'^$', TemplateView.as_view(template_name="static/landing.html")),
+    url(r'^$', dashboard_view, name='dashboard'),
 )
