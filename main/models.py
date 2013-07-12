@@ -27,6 +27,9 @@ class ProfileManager(BaseUserManager):
 
 
 class Profile(AbstractUser):
+    class Meta:
+        verbose_name = "Profile"
+        verbose_name_plural = "Profiles"
 
     objects = ProfileManager()
 
@@ -36,4 +39,7 @@ class Profile(AbstractUser):
 
 
 class Brother(Profile):
+    class Meta:
+        verbose_name = "Brother"
+        verbose_name_plural = "Brothers"
     pass
