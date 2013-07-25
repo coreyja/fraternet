@@ -4,7 +4,7 @@ from django.contrib import admin as django_admin
 from main.forms import LoginForm
 from main.views.common import dashboard_view
 from main.views.admin import admin_view
-from main.views.Brother import BrotherCreateView
+from main.views.Brother import BrotherCreateView, BrotherListView
 
 django_admin.autodiscover()
 
@@ -23,7 +23,10 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'} , name='logout'),
 
     url(r'^admin/$', admin_view, name='admin'),
-    url(r'^admin/brother/create/$', BrotherCreateView.as_view(), name='add_brother'),
+
+
+    url(r'^brother/create/$', BrotherCreateView.as_view(), name='add_brother'),
+    url(r'^brother/list/$', BrotherListView.as_view(), name='list_brothers'),
 
     #Homepage/Landing Page. Will probably be dynamic later
     url(r'^$', dashboard_view, name='dashboard'),

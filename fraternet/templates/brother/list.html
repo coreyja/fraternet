@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <table>
+        <thead>
+            <td>Name</td>
+            <td>Graduation Year</td>
+            <td>Majors</td>
+            <td>Phone Number</td>
+            <td>Email</td>
+        </thead>
+        {% for bro in object_list %}
+            <tr>
+                <td>{{ bro.name }}</td>
+                <td>{% if bro.grad_year %}{{ bro.grad_year }}{% endif %}</td>
+                <td>{{ bro.list_majors_abbrev }}</td>
+                <td>{% if bro.phone %}{{ bro.phone }}{% endif %}</td>
+                <td>{{ bro.email }}</td>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+
+{% endblock %}

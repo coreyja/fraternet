@@ -54,6 +54,31 @@ class Brother(Profile):
 
     objects = BrotherManager()
 
+    def name(self):
+        return self.first_name + ' ' + self.last_name
+
+    def list_majors(self):
+        list = ''
+
+        for major in self.majors.all():
+            list += str(major) + ', '
+
+        if list == '': return '';
+
+        #Remove the last space and comma
+        return list[:-2]
+
+    def list_majors_abbrev(self):
+        list = ''
+
+        for major in self.majors.all():
+            list += str(major.abbrev) + ', '
+
+        if list == '': return '';
+
+        #Remove the last space and comma
+        return list[:-2]
+
 
 class Major(models.Model):
 

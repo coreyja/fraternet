@@ -5,7 +5,7 @@ from main.models import Brother
 from main.forms import BrotherForm
 
 class BrotherCreateView(FormView):
-    template_name = 'admin/add_brother.html'
+    template_name = 'brother/create.html'
     form_class = BrotherForm
     success_url = '/'
 
@@ -34,3 +34,8 @@ class BrotherCreateView(FormView):
         bro.save()
 
         return redirect('admin')
+
+
+class BrotherListView(ListView):
+    model = Brother
+    template_name = 'brother/list.html'
