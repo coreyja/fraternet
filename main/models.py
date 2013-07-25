@@ -26,6 +26,10 @@ class ProfileManager(BaseUserManager):
         return u
 
 
+class BrotherManager(ProfileManager):
+    pass
+
+
 class Profile(AbstractUser):
     class Meta:
         verbose_name = "Profile"
@@ -42,4 +46,9 @@ class Brother(Profile):
     class Meta:
         verbose_name = "Brother"
         verbose_name_plural = "Brothers"
-    pass
+
+        permissions = (
+            ('is_admin', 'Is a Fraternet Admin'),
+        )
+
+    objects = BrotherManager()

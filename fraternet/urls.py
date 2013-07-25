@@ -1,12 +1,12 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic import TemplateView
+from django.contrib import admin as django_admin
 
 from main.forms import LoginForm
+from main.views.common import dashboard_view
+from main.views.admin import admin_view
+from main.views.Brother import BrotherCreateView
 
-from main.views import *
-
-from django.contrib import admin
-admin.autodiscover()
+django_admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
@@ -17,10 +17,13 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^django_admin/', include(django_admin.site.urls)),
 
     url(r'^login/$', 'django.contrib.auth.views.login',{'authentication_form': LoginForm}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'} , name='logout'),
+
+    url(r'^admin/$', admin_view, name='admin'),
+    url(r'^admin/brother/create/$', BrotherCreateView.as_view(), name='add_brother'),
 
     #Homepage/Landing Page. Will probably be dynamic later
     url(r'^$', dashboard_view, name='dashboard'),

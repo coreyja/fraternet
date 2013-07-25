@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     #Other Apps
     'south',
     'crispy_forms',
+    'django_extensions',
 
 )
 
