@@ -47,7 +47,7 @@ class Brother(Profile):
         verbose_name = "Brother"
         verbose_name_plural = "Brothers"
 
-    phone = models.CharField(max_length=9, blank=True, null=True)
+    phone = models.CharField(max_length=10, blank=True, null=True)
     grad_year = models.IntegerField(blank=True, null=True)
 
     majors = models.ManyToManyField('main.Major', related_name='brothers', blank=True, null=True)
