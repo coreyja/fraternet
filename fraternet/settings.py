@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     #Fraternet Apps
     'main',
+    'common',
     #Other Apps
     'south',
     'crispy_forms',
