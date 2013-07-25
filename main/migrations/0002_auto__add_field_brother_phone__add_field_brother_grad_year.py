@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Brother.phone'
         db.add_column(u'main_brother', 'phone',
-                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      self.gf('django.db.models.fields.CharField')(max_length=9, null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'Brother.grad_year'
@@ -51,7 +51,7 @@ class Migration(SchemaMigration):
         u'main.brother': {
             'Meta': {'object_name': 'Brother', '_ormbases': [u'main.Profile']},
             'grad_year': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'phone': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'phone': ('django.db.models.fields.CharField', [], {'max_length': '9', 'null': 'True', 'blank': 'True'}),
             u'profile_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['main.Profile']", 'unique': 'True', 'primary_key': 'True'})
         },
         u'main.profile': {
