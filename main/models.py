@@ -47,8 +47,7 @@ class Brother(Profile):
         verbose_name = "Brother"
         verbose_name_plural = "Brothers"
 
-        permissions = (
-            ('is_admin', 'Is a Fraternet Admin'),
-        )
+    phone = models.TextField(blank=True, null=True)
+    grad_year = models.IntegerField(blank=True, null=True)
 
     objects = BrotherManager()
