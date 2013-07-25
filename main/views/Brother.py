@@ -39,3 +39,10 @@ class BrotherCreateView(FormView):
 class BrotherListView(ListView):
     model = Brother
     template_name = 'brother/list.html'
+
+class BrotherDetailView(DetailView):
+    model = Brother
+    template_name = 'brother/detail.html'
+
+    def get_object(self, queryset=None):
+        return Brother.objects.get(username=self.kwargs['username'])

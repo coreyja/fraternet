@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>{{ object.name }}</h2>
+
+    {% if object.phone %}<p>Phone: {{ object.phone }}</p>{% endif %}
+    {% if object.grad_year %}<p>Graduation Year: {{ object.grad_year }}</p>{% endif %}
+    <p>Email: <a href="mailto:{{ object.email }}" target="_blank">{{ object.email }}</a></p>
+    <p>Majors: {{ object.list_majors }}</p>
+
+
+{% endblock %}

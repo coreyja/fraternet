@@ -12,7 +12,7 @@
         </thead>
         {% for bro in object_list %}
             <tr>
-                <td>{{ bro.name }}</td>
+                <td><a href="{% url 'brother_detail' username=bro.username %}">{{ bro.name }}</a></td>
                 <td>{% if bro.grad_year %}{{ bro.grad_year }}{% endif %}</td>
                 <td>{{ bro.list_majors_abbrev }}</td>
                 <td>{% if bro.phone %}{{ bro.phone }}{% endif %}</td>
