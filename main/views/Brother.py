@@ -16,6 +16,21 @@ class BrotherCreateView(FormView):
         first_name = form.cleaned_data['first_name']
         last_name = form.cleaned_data['last_name']
 
-        Brother.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name)
+        phone = form.cleaned_data['phone']
+        grad_year = form.cleaned_data['grad_year']
+
+        majors = form.cleaned_data['majors']
+
+        bro = Brother.objects.create_user(
+            username=username,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
+            grad_year=grad_year,
+        )
+
+        bro.majors = majors
+        bro.save()
 
         return redirect('admin')

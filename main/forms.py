@@ -46,6 +46,9 @@ class BrotherForm(forms.ModelForm):
         Field('password', css_class='input-xlarge'),
         Field('first_name', css_class='input-xlarge'),
         Field('last_name', css_class='input-xlarge'),
+        Field('phone', css_class='input-xlarge'),
+        Field('grad_year', css_class='input-xlarge'),
+        Field('majors', css_class='input-xlarge'),
         FormActions(
             Submit('submit', 'Submit', css_class="btn btn-primary btn-large"),
         )
@@ -55,3 +58,6 @@ class BrotherForm(forms.ModelForm):
         super(BrotherForm, self).__init__(*args, **kwargs)
         self.fields['username'].help_text = 'Use the same username used in the Brothers school email address.'
         self.fields['password'].help_text = 'Remember the password you are supplying. It can\'t be retrieved later.'
+
+        self.fields['phone'].label = 'Phone Number'
+        self.fields['grad_year'].label = 'Expected Graduation Year'

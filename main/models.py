@@ -59,3 +59,6 @@ class Major(models.Model):
 
     title = models.CharField(max_length=20, blank=False, null=False)
     abbrev = models.CharField(max_length=5)
+
+    def __unicode__(self):
+        return self.title
