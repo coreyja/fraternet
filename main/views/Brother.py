@@ -1,12 +1,17 @@
 from django.views.generic import DetailView, UpdateView, CreateView, DeleteView, ListView, FormView
 from django.shortcuts import render_to_response, redirect
+from django.core.exceptions import PermissionDenied
 
 from main.models import Brother
-from main.forms import BrotherForm
+from main.forms import BrotherForm, BrotherCreateForm
+
+import logging
+logger = logging.getLogger(__name__)
+
 
 class BrotherCreateView(FormView):
     template_name = 'brother/create.html'
-    form_class = BrotherForm
+    form_class = BrotherCreateForm
     success_url = '/'
 
     def form_valid(self, form):
@@ -46,3 +51,17 @@ class BrotherDetailView(DetailView):
 
     def get_object(self, queryset=None):
         return Brother.objects.get(username=self.kwargs['username'])
+
+class BrotherEditView(UpdateView):
+    model = Brother
+    template_name = 'brother/edit.html'
+    form_class = BrotherForm
+    success_url = '/'
+
+    def get_object(self, queryset=None):
+        bro = Brother.objects.get(username=self.kwargs['username'])
+
+        if self.request.user.brother.can_edit_brother(bro.id):
+            return bro
+
+        raise PermissionDenied

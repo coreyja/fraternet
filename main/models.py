@@ -79,6 +79,9 @@ class Brother(Profile):
         #Remove the last space and comma
         return list[:-2]
 
+    def can_edit_brother(self,id):
+        return self.id == id or self.has_perm('main.change_brother')
+
 
 class Major(models.Model):
 

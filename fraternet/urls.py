@@ -4,7 +4,7 @@ from django.contrib import admin as django_admin
 from main.forms import LoginForm
 from main.views.common import dashboard_view
 from main.views.admin import admin_view
-from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetailView
+from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetailView, BrotherEditView
 
 django_admin.autodiscover()
 
@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^brother/create/$', BrotherCreateView.as_view(), name='add_brother'),
     url(r'^brother/list/$', BrotherListView.as_view(), name='list_brothers'),
     url(r'^brother/(?P<username>[-\w]+)/$', BrotherDetailView.as_view(), name='brother_detail'),
+    url(r'^brother/(?P<username>[-\w]+)/edit/$', BrotherEditView.as_view(), name='edit_brother'),
 
     #Homepage/Landing Page. Will probably be dynamic later
     url(r'^$', dashboard_view, name='dashboard'),
