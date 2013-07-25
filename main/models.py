@@ -50,4 +50,12 @@ class Brother(Profile):
     phone = models.CharField(max_length=9, blank=True, null=True)
     grad_year = models.IntegerField(blank=True, null=True)
 
+    majors = models.ManyToManyField('main.Major', related_name='brothers', blank=True, null=True)
+
     objects = BrotherManager()
+
+
+class Major(models.Model):
+
+    title = models.CharField(max_length=20, blank=False, null=False)
+    abbrev = models.CharField(max_length=5)
