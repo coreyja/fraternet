@@ -1,0 +1,28 @@
+<div id="{{ id }}" class="majors_widget">
+    <input type="hidden" name="{{ name }}" value="{{ value_string }}" />
+
+    <div class="hide">
+        <select id="{{ id }}_hidden">
+            <option></option>
+            {% for option_value, option_label in choices %}
+                <option value="{{ option_value }}">{{ option_label }}</option>
+            {% endfor %}
+        </select>
+        <a id="remove_major">Remove</a>
+    </div>
+
+    <div class="majors">
+        {% for v in values %}
+            <div class="major">
+                <select>
+                    {% for option_value, option_label in choices %}
+                        <option value="{{ option_value }}" {% if option_value == v %}selected="selected"{% endif %}>{{ option_label }}</option>
+                    {% endfor %}
+                </select>
+                <a id="remove_major">Remove</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a id="add_major">Add a Major</a>
+</div>

@@ -7,6 +7,7 @@ from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 from main.models import Brother
+from .widgets import MajorsWidget
 
 from fraternet.settings import FRATERNET_EMAIL_DOMAIN
 
@@ -36,6 +37,10 @@ class BrotherForm(forms.ModelForm):
             'password',
         )
 
+        widgets = {
+            'majors': MajorsWidget
+        }
+
     def __init__(self, *args, **kwargs):
         super(BrotherForm, self).__init__(*args, **kwargs)
         self.fields['username'].help_text = 'Use the same username used in the Brothers school email address.'
@@ -64,6 +69,11 @@ class BrotherCreateForm(BrotherForm):
             'date_joined',
         )
 
+        widgets = {
+            'majors': MajorsWidget
+        }
+
     def __init__(self, *args, **kwargs):
         super(BrotherCreateForm, self).__init__(*args, **kwargs)
+
         self.fields['password'].help_text = 'Remember the password you are supplying. It can\'t be retrieved later.'
