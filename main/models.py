@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils import timezone
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from sortedm2m.fields import SortedManyToManyField
 
 
 class ProfileManager(BaseUserManager):
@@ -50,7 +51,8 @@ class Brother(Profile):
     phone = models.CharField(max_length=10, blank=True, null=True)
     grad_year = models.IntegerField(blank=True, null=True)
 
-    majors = models.ManyToManyField('main.Major', related_name='brothers', blank=True, null=True)
+    from django import forms
+    majors = SortedManyToManyField('main.Major', related_name='brothers', blank=True, null=True)
 
     objects = BrotherManager()
 

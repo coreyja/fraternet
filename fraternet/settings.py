@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'south',
     'crispy_forms',
     'django_extensions',
+    'sortedm2m',
 
 )
 

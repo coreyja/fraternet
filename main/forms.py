@@ -4,7 +4,7 @@ from crispy_forms.layout import Submit
 from django.contrib.auth.forms import AuthenticationForm
 
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
-from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions\
+from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 from main.models import Brother
 
@@ -38,7 +38,7 @@ class BrotherForm(forms.ModelForm):
             'is_staff',
             'is_active',
             'date_joined',
-            'password'
+            'password',
         )
 
     helper = FormHelper()
