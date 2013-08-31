@@ -51,7 +51,6 @@ class Brother(Profile):
     phone = models.CharField(max_length=10, blank=True, null=True)
     grad_year = models.IntegerField(blank=True, null=True)
 
-    from django import forms
     majors = SortedManyToManyField('main.Major', related_name='brothers', blank=True, null=True)
 
     objects = BrotherManager()
