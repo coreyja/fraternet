@@ -20,7 +20,7 @@ class Rushie(Profile):
     phone = models.CharField(max_length=10, blank=True, null=True)
     grad_year = models.IntegerField(blank=True, null=True)
 
-    majors = SortedManyToManyField('main.Major', related_name='brothers', blank=True, null=True)
+    majors = SortedManyToManyField('main.Major', related_name='rushies', blank=True, null=True)
 
     objects = RushieManager()
 
