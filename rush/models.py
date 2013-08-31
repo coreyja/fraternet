@@ -7,6 +7,7 @@ from sortedm2m.fields import SortedManyToManyField
 
 from main.models import ProfileManager, Profile
 
+from comments.models import Comment
 
 class RushieManager(ProfileManager):
     pass
@@ -48,3 +49,8 @@ class Rushie(Profile):
 
         #Remove the last space and comma
         return list[:-2]
+
+
+class RushieComment(Comment):
+
+    commented_on = models.ForeignKey(Rushie, related_name='comments')
