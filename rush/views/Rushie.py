@@ -2,11 +2,12 @@ from django.views.generic import DetailView, UpdateView, CreateView, DeleteView,
 from django.shortcuts import render_to_response, redirect
 from django.core.exceptions import PermissionDenied
 
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.utils.decorators import method_decorator
 
 from rush.models import Rushie
 from rush.forms import RushieCreateForm
+from common.utils import is_brother
 
 
 class RushieCreateView(FormView):
@@ -39,3 +40,12 @@ class RushieCreateView(FormView):
         rushie.save()
 
         return redirect('dashboard')
+
+
+class RushieListView(ListView):
+    model = Rushie
+    template_name = 'rushie/list.html'
+
+    @method_decorator(user_passes_test(is_brother))
+    def dispatch(self, request, *args, **kwargs):
+        return super(RushieListView, self).dispatch(request, *args, **kwargs)

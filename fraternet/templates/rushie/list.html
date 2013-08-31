@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <table>
+        <thead>
+            <td>Name</td>
+            <td>Graduation Year</td>
+            <td>Majors</td>
+            <td>Phone Number</td>
+            <td>Email</td>
+        </thead>
+        {% for rushie in object_list %}
+            <tr>
+                <td><a href="{% url 'brother_detail' username=rushie.username %}">{{ rushie.name }}</a></td>
+                <td>{% if rushie.grad_year %}{{ rushie.grad_year }}{% endif %}</td>
+                <td>{{ rushie.list_majors_abbrev }}</td>
+                <td>{% if rushie.phone %}{{ rushie.phone }}{% endif %}</td>
+                <td>{{ rushie.email }}</td>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+
+{% endblock %}
