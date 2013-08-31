@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     #Fraternet Apps
     'main',
     'common',
+    'comments',
     #Other Apps
     'south',
     'crispy_forms',
