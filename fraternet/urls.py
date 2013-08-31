@@ -6,6 +6,8 @@ from main.views.common import dashboard_view
 from main.views.admin import admin_view
 from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetailView, BrotherEditView
 
+from rush import urls as rush_urls
+
 django_admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -18,6 +20,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^django_admin/', include(django_admin.site.urls)),
+
+    #Rush Urls
+    url(r'^rush/', include(rush_urls)),
 
     url(r'^login/$', 'django.contrib.auth.views.login',{'authentication_form': LoginForm}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'} , name='logout'),
