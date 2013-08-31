@@ -49,3 +49,14 @@ class RushieListView(ListView):
     @method_decorator(user_passes_test(is_brother))
     def dispatch(self, request, *args, **kwargs):
         return super(RushieListView, self).dispatch(request, *args, **kwargs)
+
+class RushieDetailView(DetailView):
+    model = Rushie
+    template_name = 'rushie/detail.html'
+
+    @method_decorator(user_passes_test(is_brother))
+    def dispatch(self, request, *args, **kwargs):
+        return super(RushieDetailView, self).dispatch(request, *args, **kwargs)
+
+    def get_object(self, queryset=None):
+        return Rushie.objects.get(username=self.kwargs['username'])
