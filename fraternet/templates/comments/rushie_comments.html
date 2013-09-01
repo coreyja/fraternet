@@ -11,7 +11,7 @@
     <div id="create-comment">
         <form action="./comment" method="post">
             {% csrf_token %}
-            <textarea class="comment" name="comment">Type your comment here</textarea>
+            <textarea class="comment" name="comment" placeholder="Type Your Comment Here"></textarea>
 
             <input type="submit" class="btn" value="Submit">
         </form>
