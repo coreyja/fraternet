@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load fraternet_filters %}
 
 {% block content %}
 
-    <table>
+    <table class='list-view'>
         <thead>
             <td>Name</td>
             <td>Graduation Year</td>
@@ -15,8 +16,8 @@
                 <td><a href="{% url 'rushie_detail' username=rushie.username %}">{{ rushie.name }}</a></td>
                 <td>{% if rushie.grad_year %}{{ rushie.grad_year }}{% endif %}</td>
                 <td>{{ rushie.list_majors_abbrev }}</td>
-                <td>{% if rushie.phone %}{{ rushie.phone }}{% endif %}</td>
-                <td>{{ rushie.email }}</td>
+                <td>{% if rushie.phone %}{{ rushie.phone|phone }}{% endif %}</td>
+                <td><a href="mailto:{{ rushie.email }}">{{ rushie.email }}</a></td>
             </tr>
         {% endfor %}
 
