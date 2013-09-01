@@ -1,7 +1,20 @@
 {% block comments %}
     <h2>Comments</h2>
 
-    {% for comment in rushie.comments.all %}
-        {% include "comments/single_comment.html" %}
-    {% endfor %}
+    <div id="comments-container">
+        {% for comment in rushie.comments.all %}
+            {% include "comments/single_comment.html" %}
+        {% endfor %}
+    </div>
+
+
+    <div id="create-comment">
+        <form action="./comment" method="post">
+            {% csrf_token %}
+            <textarea class="comment" name="comment">Type your comment here</textarea>
+
+            <input type="submit" class="btn" value="Submit">
+        </form>
+    </div>
 {% endblock %}
+

@@ -1,11 +1,14 @@
-from django.views.generic import DetailView, UpdateView, CreateView, DeleteView, ListView, FormView
+from django.views.generic import DetailView, UpdateView, CreateView, DeleteView, ListView, FormView, View
 from django.shortcuts import render_to_response, redirect
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+import json
 
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.utils.decorators import method_decorator
 
-from rush.models import Rushie
+from rush.models import Rushie, RushieComment
 from rush.forms import RushieCreateForm
 from common.utils import is_brother
 
@@ -60,3 +63,24 @@ class RushieDetailView(DetailView):
 
     def get_object(self, queryset=None):
         return Rushie.objects.get(username=self.kwargs['username'])
+
+
+class CreateCommentView(View):
+
+    def post(self, request, *args, **kwargs):
+
+        rushie = Rushie.objects.get(username=self.kwargs['username'])
+
+        comment = RushieComment.objects.create(
+            comment=request.POST['comment'],
+            commented_on=rushie,
+            created_by=request.user,
+        )
+
+        comment_html = render_to_string('comments/single_comment.html', {'comment':comment})
+
+        data = {
+            'success': True,
+            'comment_html': comment_html,
+        }
+        return HttpResponse(json.dumps(data), mimetype="application/json")

@@ -13,3 +13,7 @@
     {% include 'comments/rushie_comments.html' with rushie=object %}
 
 {% endblock %}
+
+{% block extra_js %}
+    <script src="/static/js/compiled/RushieComments.js"></script>
+{% endblock %}
