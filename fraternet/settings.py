@@ -67,7 +67,7 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static-files')
 STATIC_URL = '/static/'
 
 # change MEDIA_URL
-MEDIA_URL = '/static/media/'
+MEDIA_URL = '/media/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (

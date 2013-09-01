@@ -5,6 +5,8 @@
 
     <h2>{{ object.name }}</h2>
 
+     {% if object.picture %}<img src="{{ object.picture.url }}" >{% endif %}
+
     {% if object.phone %}<p>Phone: {{ object.phone|phone }}</p>{% endif %}
     {% if object.grad_year %}<p>Graduation Year: {{ object.grad_year }}</p>{% endif %}
     <p>Email: <a href="mailto:{{ object.email }}" target="_blank">{{ object.email }}</a></p>

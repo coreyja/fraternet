@@ -8,6 +8,8 @@ from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetail
 
 from rush import urls as rush_urls
 
+import settings
+
 django_admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -37,4 +39,6 @@ urlpatterns = patterns('',
 
     #Homepage/Landing Page. Will probably be dynamic later
     url(r'^$', dashboard_view, name='dashboard'),
+
+    url(r"%s(?P<path>.*)$" % settings.MEDIA_URL[1:], "django.views.static.serve", {"document_root": settings.MEDIA_ROOT,}),
 )
