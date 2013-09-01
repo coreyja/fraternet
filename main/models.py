@@ -42,6 +42,12 @@ class Profile(AbstractUser):
         super(Profile, self).save(*args, **kwargs)
         self.email = self.username + '@' + settings.FRATERNET_EMAIL_DOMAIN
 
+    def name(self):
+        return self.first_name + ' ' + self.last_name
+
+    def __unicode__(self):
+        return self.name()
+
 
 class Brother(Profile):
     class Meta:
@@ -55,8 +61,7 @@ class Brother(Profile):
 
     objects = BrotherManager()
 
-    def name(self):
-        return self.first_name + ' ' + self.last_name
+
 
     def list_majors(self):
         list = ''
