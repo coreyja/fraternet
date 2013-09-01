@@ -1,0 +1,7 @@
+{% block comments %}
+    <h2>Comments</h2>
+
+    {% for comment in rushie.comments.all %}
+        {% include "comments/single_comment.html" %}
+    {% endfor %}
+{% endblock %}

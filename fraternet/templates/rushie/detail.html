@@ -10,5 +10,6 @@
     <p>Email: <a href="mailto:{{ object.email }}" target="_blank">{{ object.email }}</a></p>
     <p>Majors: {{ object.list_majors }}</p>
 
+    {% include 'comments/rushie_comments.html' with rushie=object %}
 
 {% endblock %}
