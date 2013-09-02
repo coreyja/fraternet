@@ -6,17 +6,18 @@ jQuery ->
 
     $('.majors_widget input[type="hidden"]').val(values.join(','))
 
-  $(document).on 'change','div.major select', () ->
+  $(document).on 'change','.major select', () ->
     refreshHiddenValue()
 
   $('.majors_widget #add_major').click () ->
+    console.log('Test')
     id = $(this).parents('div.majors_widget').attr('id')
-    newMajor = $('select#' + id + '_hidden').parent().clone().removeClass('hide')
-    newMajor.find('select').removeAttr('id')
+    newMajor = $('li#' + id + '_hidden').clone().removeClass('hide').addClass('major')
+    newMajor.removeAttr('id')
 
-    newMajor.appendTo('div#' + id + ' .majors')
+    newMajor.appendTo('#' + id + ' .majors')
     refreshHiddenValue()
 
-  $(document).on 'click', '#remove_major', () ->
-    $(this).parents('div.major').remove()
+  $(document).on 'click', 'button.remove_major', () ->
+    $(this).parents('.major').remove()
     refreshHiddenValue()

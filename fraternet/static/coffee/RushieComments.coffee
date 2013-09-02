@@ -1,12 +1,13 @@
 jQuery ->
 
-  $('div#create-comment form').ajaxForm( (data) ->
-    if data.success
-      comment = $(data.comment_html)
+  $('div#create-comment form button.submit').click () ->
+    $(this).parents('form').ajaxSubmit( (data) ->
+      if data.success
+        comment = $(data.comment_html)
 
-      comment.hide()
+        comment.hide()
 
-      comment.appendTo('div#comments-container')
+        comment.appendTo('div#comments-container')
 
-      comment.slideDown()
-  )
+        comment.slideDown()
+    )

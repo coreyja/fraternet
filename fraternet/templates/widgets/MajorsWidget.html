@@ -1,28 +1,44 @@
 <div id="{{ id }}" class="majors_widget">
     <input type="hidden" name="{{ name }}" value="{{ value_string }}" />
 
-    <div class="hide">
-        <select id="{{ id }}_hidden">
-            <option></option>
-            {% for option_value, option_label in choices %}
-                <option value="{{ option_value }}">{{ option_label }}</option>
-            {% endfor %}
-        </select>
-        <a id="remove_major">Remove</a>
-    </div>
+    <li class="hide" id="{{ id }}_hidden">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-resize-vertical"></span></span>
 
-    <div class="majors">
+            <select class="form-control">
+                {% for option_value, option_label in choices %}
+                    <option value="{{ option_value }}" {% if option_value == v %}selected="selected"{% endif %}>{{ option_label }}</option>
+                {% endfor %}
+            </select>
+            <span class="input-group-btn">
+                <button class="btn btn-default remove_major" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+            </span>
+        </div>
+
+
+    </li>
+
+    <ul class="majors">
         {% for v in values %}
-            <div class="major">
-                <select>
-                    {% for option_value, option_label in choices %}
-                        <option value="{{ option_value }}" {% if option_value == v %}selected="selected"{% endif %}>{{ option_label }}</option>
-                    {% endfor %}
-                </select>
-                <a id="remove_major">Remove</a>
-            </div>
-        {% endfor %}
-    </div>
+            <li class="major">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-resize-vertical"></span></span>
 
-    <a id="add_major">Add a Major</a>
+                    <select class="form-control">
+                        {% for option_value, option_label in choices %}
+                            <option value="{{ option_value }}" {% if option_value == v %}selected="selected"{% endif %}>{{ option_label }}</option>
+                        {% endfor %}
+                    </select>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default remove_major" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                    </span>
+                </div>
+
+
+            </li>
+        {% endfor %}
+    </ul>
+
+    <button type="button" class="btn" id="add_major"><span class="glyphicon glyphicon-plus"></span> Add a Major</button>
+
 </div>

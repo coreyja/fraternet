@@ -3,26 +3,29 @@
 
 {% block content %}
 
-    <table class='list-view'>
-        <thead>
-            <td>Name</td>
-            <td>Graduation Year</td>
-            <td>Majors</td>
-            <td>Phone Number</td>
-            <td>Email</td>
-        </thead>
-        {% for rushie in object_list %}
-            <tr>
-                <td><a href="{% url 'rushie_detail' username=rushie.username %}">{{ rushie.name }}</a></td>
-                <td>{% if rushie.grad_year %}{{ rushie.grad_year }}{% endif %}</td>
-                <td>{{ rushie.list_majors_abbrev }}</td>
-                <td>{% if rushie.phone %}{{ rushie.phone|phone }}{% endif %}</td>
-                <td><a href="mailto:{{ rushie.email }}">{{ rushie.email }}</a></td>
-            </tr>
-        {% endfor %}
+    <div class="panel panel-default">
+        <div class="panel-heading">Pledges</div>
+        <table class="list-view table">
+            <thead>
+                <td>Name</td>
+                <td>Graduation Year</td>
+                <td>Majors</td>
+                <td>Phone Number</td>
+                <td>Email</td>
+            </thead>
+            {% for rushie in object_list %}
+                <tr>
+                    <td><a href="{% url 'rushie_detail' username=rushie.username %}">{{ rushie.name }}</a></td>
+                    <td>{% if rushie.grad_year %}{{ rushie.grad_year }}{% endif %}</td>
+                    <td>{{ rushie.list_majors_abbrev }}</td>
+                    <td>{% if rushie.phone %}{{ rushie.phone|phone }}{% endif %}</td>
+                    <td><a href="mailto:{{ rushie.email }}">{{ rushie.email }}</a></td>
+                </tr>
+            {% endfor %}
 
 
-    </table>
+        </table>
+    </div>
 
 
 {% endblock %}

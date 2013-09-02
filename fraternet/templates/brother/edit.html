@@ -2,10 +2,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1>Edit - {{ object.name }}</h1>
 
-    <h1>Edit - {{ object.name }}</h1>
-
-    {% crispy form %}
+            {% crispy form %}
+        </div>
+    </div>
 
 {% endblock %}
 

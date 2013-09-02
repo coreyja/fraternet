@@ -181,6 +181,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
 LOGOUT_URL = '/logout'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 ###############################################################################
 # Import local settings (override)
 ###############################################################################

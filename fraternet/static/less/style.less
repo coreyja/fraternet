@@ -1,17 +1,50 @@
+@import "MajorsWidget.less";
+
 table.list-view {
 	width: 100%;
 
 	thead {
 		font-weight: bold;
-		border-bottom: #000000 2px solid;
+//		border-bottom: #000000 2px solid;
     }
 
     tbody {
         tr {
-            border-bottom: #e6e6e6 1px solid;
+//            border-bottom: #e6e6e6 1px solid;
 
 	        height: 40px
 
         }
     }
+}
+
+.panel-heading {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.panel-footer {
+	font-size: 12px;
+
+	p {
+		padding: 0;
+		margin: 0;
+
+		&.created-by {
+			font-weight: bold;
+		}
+
+		&.timestamp {
+			text-align: right;
+		}
+	}
+
+}
+
+div#create-comment{
+	button.submit {
+		margin-top: 15px;
+
+		float: right;
+	}
 }

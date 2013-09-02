@@ -7,14 +7,15 @@
         {% endfor %}
     </div>
 
+    <div class="panel panel-default">
+        <div id="create-comment" class="panel-body">
+            <form action="./comment" method="post">
+                {% csrf_token %}
+                <textarea class="comment form-control" rows="3" name="comment" placeholder="Type Your Comment Here"></textarea>
 
-    <div id="create-comment">
-        <form action="./comment" method="post">
-            {% csrf_token %}
-            <textarea class="comment" name="comment" placeholder="Type Your Comment Here"></textarea>
-
-            <input type="submit" class="btn" value="Comment">
-        </form>
+                <button type="button" class="btn submit"><span class="glyphicon glyphicon-comment"></span> Comment</button>
+            </form>
+        </div>
     </div>
 {% endblock %}
 
