@@ -32,7 +32,9 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{% url 'list_brothers' %}">Brothers</a></li>
 
-                        <li><a href="{% url 'list_rushies' %}">Rushies</a></li>
+                        {% if user.brother %}
+                            <li><a href="{% url 'list_rushies' %}">Rushies</a></li>
+                        {% endif %}
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
