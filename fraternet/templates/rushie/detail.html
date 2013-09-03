@@ -7,6 +7,9 @@
         {% if object.picture %}<img src="{{ object.picture.url }}" >{% endif %}
     </div>
     <div class="col-sm-6">
+        {% if perms.rush.can_edit%}
+            <a href="{% url 'edit_rushie' username=object.username %}" class="btn btn-default" id="edit-button">Edit</a>
+        {% endif %}
 
         <h2>{{ object.name }}</h2>
 

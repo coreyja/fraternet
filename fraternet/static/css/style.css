@@ -10,6 +10,9 @@
   display: block;
   float: right;
 }
+.row img {
+  width: 100%;
+}
 table.list-view {
   width: 100%;
 }
@@ -39,4 +42,8 @@ table.list-view tbody tr {
 div#create-comment button.submit {
   margin-top: 15px;
   float: right;
+}
+a#edit-button {
+  float: right;
+  margin-right: 20px;
 }
