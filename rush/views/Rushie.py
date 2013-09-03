@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required, permission_required, 
 from django.utils.decorators import method_decorator
 
 from rush.models import Rushie, RushieComment
-from rush.forms import RushieCreateForm
+from rush.forms import RushieCreateForm, RushieEditForm
 from common.utils import is_brother
 
 
@@ -63,6 +63,19 @@ class RushieDetailView(DetailView):
 
     def get_object(self, queryset=None):
         return Rushie.objects.get(username=self.kwargs['username'])
+
+class RushieEditView(UpdateView):
+    model = Rushie
+    template_name = 'rushie/edit.html'
+    form_class = RushieEditForm
+
+    @method_decorator(permission_required('rush.edit_rushie'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(RushieEditView, self).dispatch(request, *args, **kwargs)
+
+    def get_object(self, queryset=None):
+        return Rushie.objects.get(username=self.kwargs['username'])
+
 
 
 class CreateCommentView(View):

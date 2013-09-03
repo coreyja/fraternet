@@ -1,21 +1,26 @@
 {% block comments %}
-    <h2>Comments</h2>
 
-    <div id="comments-container">
-        {% for comment in rushie.comments.all %}
-            {% include "comments/single_comment.html" %}
-        {% endfor %}
     </div>
+    <div class="row">
 
-    <div class="panel panel-default">
-        <div id="create-comment" class="panel-body">
-            <form action="./comment" method="post">
-                {% csrf_token %}
-                <textarea class="comment form-control" rows="3" name="comment" placeholder="Type Your Comment Here"></textarea>
+        <div id="comments-container" class="col-sm-12">
+            <h2>Comments</h2>
 
-                <button type="button" class="btn submit"><span class="glyphicon glyphicon-comment"></span> Comment</button>
-            </form>
+            {% for comment in rushie.comments.all %}
+                {% include "comments/single_comment.html" %}
+            {% endfor %}
+
+
+        <div class="panel panel-default">
+                <div id="create-comment" class="panel-body">
+                    <form action="./comment" method="post">
+                        {% csrf_token %}
+                        <textarea class="comment form-control" rows="3" name="comment" placeholder="Type Your Comment Here"></textarea>
+
+                        <button type="button" class="btn submit"><span class="glyphicon glyphicon-comment"></span> Comment</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-{% endblock %}
 
+{% endblock %}

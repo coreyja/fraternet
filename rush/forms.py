@@ -38,6 +38,9 @@ class RushieEditForm(forms.ModelForm):
         self.fields['phone'].label = 'Phone Number'
         self.fields['grad_year'].label = 'Expected Graduation Year'
 
+        if 'picture' in self.fields:
+            self.fields['picture'].label = 'Profile Picture'
+
         self.helper = FormHelper(self)
         self.helper.add_input(Submit('submit', 'Submit', css_class="btn btn-primary btn-large"))
 
@@ -58,6 +61,7 @@ class RushieCreateForm(RushieEditForm):
             'is_staff',
             'is_active',
             'date_joined',
+            'picture',
         )
 
         widgets = {
