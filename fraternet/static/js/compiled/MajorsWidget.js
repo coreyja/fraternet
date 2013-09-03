@@ -10,19 +10,20 @@
       });
       return $('.majors_widget input[type="hidden"]').val(values.join(','));
     };
-    $(document).on('change', 'div.major select', function() {
+    $(document).on('change', '.major select', function() {
       return refreshHiddenValue();
     });
     $('.majors_widget #add_major').click(function() {
       var id, newMajor;
+      console.log('Test');
       id = $(this).parents('div.majors_widget').attr('id');
-      newMajor = $('select#' + id + '_hidden').parent().clone().removeClass('hide').addClass('major');
-      newMajor.find('select').removeAttr('id');
-      newMajor.appendTo('div#' + id + ' .majors');
+      newMajor = $('li#' + id + '_hidden').clone().removeClass('hide').addClass('major');
+      newMajor.removeAttr('id');
+      newMajor.appendTo('#' + id + ' .majors');
       return refreshHiddenValue();
     });
-    return $(document).on('click', '#remove_major', function() {
-      $(this).parents('div.major').remove();
+    return $(document).on('click', 'button.remove_major', function() {
+      $(this).parents('.major').remove();
       return refreshHiddenValue();
     });
   });

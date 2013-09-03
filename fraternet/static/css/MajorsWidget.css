@@ -1,0 +1,12 @@
+.majors_widget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.majors_widget ul li {
+  margin: 20px 0;
+}
+.majors_widget ul li a {
+  display: block;
+  float: right;
+}

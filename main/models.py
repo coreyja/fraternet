@@ -38,6 +38,8 @@ class Profile(AbstractUser):
 
     objects = ProfileManager()
 
+    picture = models.ImageField(upload_to='./profile-pics/', blank=True, null=True)
+
     def save(self, *args, **kwargs):
         super(Profile, self).save(*args, **kwargs)
         self.email = self.username + '@' + settings.FRATERNET_EMAIL_DOMAIN

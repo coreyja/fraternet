@@ -53,9 +53,11 @@
         </nav>
 
         <div class="container">
+            <div class="row">
+                {% block content %}
+                {% endblock %}
+            </div>
 
-            {% block content %}
-            {% endblock %}
 
         </div> <!-- /container -->
 
@@ -63,6 +65,7 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="//code.jquery.com/jquery.js"></script>
+        <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="/static/bootstrap/js/bootstrap.min.js"></script>
         <script src="/static/js/jquery.form.min.js"></script>
 

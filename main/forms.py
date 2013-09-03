@@ -38,7 +38,9 @@ class BrotherForm(forms.ModelForm):
         )
 
         widgets = {
-            'majors': MajorsWidget
+            'majors': MajorsWidget,
+            'picture': forms.FileInput
+
         }
 
     def __init__(self, *args, **kwargs):
@@ -48,10 +50,14 @@ class BrotherForm(forms.ModelForm):
         self.fields['phone'].label = 'Phone Number'
         self.fields['grad_year'].label = 'Expected Graduation Year'
 
+        self.fields['picture'].label = 'Profile Picture'
+
         self.helper = FormHelper(self)
         self.helper.add_input(Submit('submit', 'Submit', css_class="btn btn-primary btn-large"))
 
         self.helper['username'].wrap(AppendedText, "@%s" % FRATERNET_EMAIL_DOMAIN)
+
+
 
 
 class BrotherCreateForm(BrotherForm):
@@ -70,7 +76,9 @@ class BrotherCreateForm(BrotherForm):
         )
 
         widgets = {
-            'majors': MajorsWidget
+            'majors': MajorsWidget,
+            'picture': forms.FileInput
+
         }
 
     def __init__(self, *args, **kwargs):

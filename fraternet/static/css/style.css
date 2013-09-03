@@ -1,11 +1,42 @@
+.majors_widget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.majors_widget ul li {
+  margin: 20px 0;
+}
+.majors_widget ul li a {
+  display: block;
+  float: right;
+}
 table.list-view {
   width: 100%;
 }
 table.list-view thead {
   font-weight: bold;
-  border-bottom: #000000 2px solid;
 }
 table.list-view tbody tr {
-  border-bottom: #e6e6e6 1px solid;
   height: 40px;
+}
+.panel-heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+.panel-footer {
+  font-size: 12px;
+}
+.panel-footer p {
+  padding: 0;
+  margin: 0;
+}
+.panel-footer p.created-by {
+  font-weight: bold;
+}
+.panel-footer p.timestamp {
+  text-align: right;
+}
+div#create-comment button.submit {
+  margin-top: 15px;
+  float: right;
 }
