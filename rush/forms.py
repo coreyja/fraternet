@@ -28,7 +28,9 @@ class RushieEditForm(forms.ModelForm):
         )
 
         widgets = {
-            'majors': MajorsWidget
+            'majors': MajorsWidget,
+            'picture': forms.FileInput
+
         }
 
     def __init__(self, *args, **kwargs):
@@ -65,7 +67,7 @@ class RushieCreateForm(RushieEditForm):
         )
 
         widgets = {
-            'majors': MajorsWidget
+            'majors': MajorsWidget,
         }
 
     def __init__(self, *args, **kwargs):

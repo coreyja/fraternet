@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load fraternet_filters %}
+
+{% block content %}
+
+    <div class="col-sm-6">
+        {% if object.picture %}<img src="{{ object.picture.url }}" >{% endif %}
+    </div>
+    <div class="col-sm-6">
+
+        <a href="{% url 'edit_profile' %}" class="btn btn-default" id="edit-button">Edit</a>
+
+
+        <h2>{{ object.name }}</h2>
+
+        {% if object.phone %}<p>Phone: {{ object.phone|phone }}</p>{% endif %}
+        {% if object.grad_year %}<p>Graduation Year: {{ object.grad_year }}</p>{% endif %}
+        <p>Email: <a href="mailto:{{ object.email }}" target="_blank">{{ object.email }}</a></p>
+        <p>Majors: {{ object.list_majors }}</p>
+
+
+    </div>
+
+
+
+{% endblock %}

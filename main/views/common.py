@@ -1,10 +1,56 @@
 # Create your views here.
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.views.generic import DetailView, UpdateView
+from django.contrib.auth.decorators import login_required, permission_required
+from django.utils.decorators import method_decorator
+
+from main.models import Profile, Brother
+from main.forms import BrotherForm
+from rush.models import Rushie
+from rush.forms import RushieEditForm
 
 def dashboard_view(request):
     if request.user.is_authenticated():
         return render_to_response('dashboard.html', context_instance=RequestContext(request))
     else:
         return render_to_response('static/landing.html', context_instance=RequestContext(request))
+
+
+class ProfileView(DetailView):
+    template_name = 'profile/detail.html'
+    model = Profile
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        if hasattr(self.request.user, 'brother'):
+            self.model = Brother
+        elif hasattr(self.request.user, 'rushie'):
+            self.model = Rushie
+
+        return super(ProfileView, self).dispatch(*args, **kwargs)
+
+    def get_object(self, queryset=None):
+        return self.model.objects.get(id=self.request.user.id)
+
+
+class ProfileEditView(UpdateView):
+    template_name = 'profile/edit.html'
+    form_class = BrotherForm
+    model = Profile
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        if hasattr(self.request.user, 'brother'):
+            self.model = Brother
+        elif hasattr(self.request.user, 'rushie'):
+            self.model = Rushie
+            self.form_class = RushieEditForm
+
+        return super(ProfileEditView, self).dispatch(*args, **kwargs)
+
+    def get_object(self, queryset=None):
+        return self.model.objects.get(id=self.request.user.id)
+
+

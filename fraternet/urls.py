@@ -1,8 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin as django_admin
+from django.contrib.auth.decorators import login_required
 
 from main.forms import LoginForm
-from main.views.common import dashboard_view
+from main.views.common import dashboard_view, ProfileView, ProfileEditView
 from main.views.admin import admin_view
 from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetailView, BrotherEditView
 
@@ -36,6 +37,9 @@ urlpatterns = patterns('',
     url(r'^brother/list/$', BrotherListView.as_view(), name='list_brothers'),
     url(r'^brother/(?P<username>[-\w]+)/$', BrotherDetailView.as_view(), name='brother_detail'),
     url(r'^brother/(?P<username>[-\w]+)/edit/$', BrotherEditView.as_view(), name='edit_brother'),
+
+    url(r'^profile/$', ProfileView.as_view(), name="profile"),
+    url(r'^profile/edit/$', ProfileEditView.as_view(), name="edit_profile"),
 
     #Homepage/Landing Page. Will probably be dynamic later
     url(r'^$', dashboard_view, name='dashboard'),
