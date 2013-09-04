@@ -5,7 +5,7 @@
     refreshHiddenValue = function() {
       var values;
       values = [];
-      $('.majors_widget div.major select').each(function() {
+      $('.majors_widget li.major select').each(function() {
         return values.push($(this).val());
       });
       return $('.majors_widget input[type="hidden"]').val(values.join(','));

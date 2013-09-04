@@ -1,7 +1,7 @@
 jQuery ->
   refreshHiddenValue = () ->
     values = []
-    $('.majors_widget div.major select').each () ->
+    $('.majors_widget li.major select').each () ->
       values.push($(this).val())
 
     $('.majors_widget input[type="hidden"]').val(values.join(','))
