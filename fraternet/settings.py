@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'common',
     'rush',
     'comments',
+    'events',
     #Other Apps
     'south',
     'crispy_forms',
