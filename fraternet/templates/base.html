@@ -31,6 +31,7 @@
 
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
+                        <li><a href="{% url 'general-info' %}">General Info</a></li>
                         <li><a href="{% url 'list_brothers' %}">Brothers</a></li>
 
                         {% if user.brother %}
@@ -41,6 +42,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
                     {% if not user.rushie %}
                         <li><a href="{% url 'create_rushie' %}">Rushie Sign-Up</a></li>
                     {% endif %}

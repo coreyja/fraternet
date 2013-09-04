@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from django.views.generic import DetailView, UpdateView
+from django.views.generic import DetailView, UpdateView, TemplateView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 
@@ -55,5 +55,12 @@ class ProfileEditView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.model.objects.get(id=self.request.user.id)
+
+
+class GeneralInfoView(TemplateView):
+    template_name = 'static/general_info.html'
+
+class ContactUsView(TemplateView):
+    template_name = 'static/contact.html'
 
 

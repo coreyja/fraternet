@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="col-sm-12">
+        <h1>Contact Us</h1>
+
+        <p>Contact <a href="{% url 'brother_detail' username='umstedjr' %}">Jake Umstead</a>, our rush chair, for any information regarding rush.</p>
+
+        <p>Also, check us out on social networking.</p>
+        <p>Facebook: <a href="https://www.facebook.com/ATOIGG">facebook.com/ATOIGG</a></p>
+        <p>Twitter: <a href="https://twitter.com/ATORose">twitter.com/ATORose</a></p>
+
+        <p>And our website at <a href="http://www.atorose.com">atorose.com</a></p>
+
+        <p>For any questions, comments or suggestions related to the Rush Portal, contact <a href="{% url 'brother_detail' username='alexancj' %}">Corey Alexander.</a></p>
+    </div>
+
+{% endblock %}
