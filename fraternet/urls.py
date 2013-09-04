@@ -8,6 +8,7 @@ from main.views.admin import admin_view
 from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetailView, BrotherEditView
 
 from rush import urls as rush_urls
+from events import urls as event_urls
 
 import settings
 
@@ -26,6 +27,8 @@ urlpatterns = patterns('',
 
     #Rush Urls
     url(r'^rush/', include(rush_urls)),
+    url(r'^events/', include(event_urls)),
+
 
     url(r'^login/$', 'django.contrib.auth.views.login',{'authentication_form': LoginForm}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'} , name='logout'),
