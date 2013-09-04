@@ -25,7 +25,9 @@
       $(this).parents('.major').remove();
       return refreshHiddenValue();
     });
-    return $('.majors').sortable();
+    return $('.majors').sortable({
+      update: refreshHiddenValue()
+    });
   });
 
 }).call(this);
