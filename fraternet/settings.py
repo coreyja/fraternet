@@ -179,8 +179,8 @@ FRATERNET_EMAIL_DOMAIN = 'domain.com'
 AUTH_USER_MODEL = 'main.Profile'
 
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login'
-LOGOUT_URL = '/logout'
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
