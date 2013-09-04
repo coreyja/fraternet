@@ -15,17 +15,17 @@
     });
     $('.majors_widget #add_major').click(function() {
       var id, newMajor;
-      console.log('Test');
       id = $(this).parents('div.majors_widget').attr('id');
       newMajor = $('li#' + id + '_hidden').clone().removeClass('hide').addClass('major');
       newMajor.removeAttr('id');
       newMajor.appendTo('#' + id + ' .majors');
       return refreshHiddenValue();
     });
-    return $(document).on('click', 'button.remove_major', function() {
+    $(document).on('click', 'button.remove_major', function() {
       $(this).parents('.major').remove();
       return refreshHiddenValue();
     });
+    return $('.majors').sortable();
   });
 
 }).call(this);
