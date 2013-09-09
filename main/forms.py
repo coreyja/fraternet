@@ -35,6 +35,7 @@ class BrotherForm(forms.ModelForm):
             'is_active',
             'date_joined',
             'password',
+            'username',
         )
 
         widgets = {
@@ -45,17 +46,19 @@ class BrotherForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(BrotherForm, self).__init__(*args, **kwargs)
-        self.fields['username'].help_text = 'Use the same username used in the Brothers school email address.'
+        self.helper = FormHelper(self)
+
+        if 'username' in self.fields:
+            self.helper['username'].wrap(AppendedText, "@%s" % FRATERNET_EMAIL_DOMAIN)
+            self.fields['username'].help_text = 'Use the same username used in the Brothers school email address.'
 
         self.fields['phone'].label = 'Phone Number'
         self.fields['grad_year'].label = 'Expected Graduation Year'
 
         self.fields['picture'].label = 'Profile Picture'
 
-        self.helper = FormHelper(self)
         self.helper.add_input(Submit('submit', 'Submit', css_class="btn btn-primary btn-large"))
 
-        self.helper['username'].wrap(AppendedText, "@%s" % FRATERNET_EMAIL_DOMAIN)
 
 
 
