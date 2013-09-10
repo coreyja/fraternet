@@ -56,6 +56,9 @@ class ProfileEditView(UpdateView):
     def get_object(self, queryset=None):
         return self.model.objects.get(id=self.request.user.id)
 
+    def get_success_url(self):
+        return reverse('profile')
+
 
 class GeneralInfoView(TemplateView):
     template_name = 'static/general_info.html'
