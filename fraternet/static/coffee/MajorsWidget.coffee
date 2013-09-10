@@ -21,6 +21,6 @@ jQuery ->
     $(this).parents('.major').remove()
     refreshHiddenValue()
 
-  $('.majors').sortable({
-    update: refreshHiddenValue(),
-  });
+  $( ".majors" ).on( "sortupdate", refreshHiddenValue );
+
+  $('.majors').sortable();
