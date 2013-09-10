@@ -53,6 +53,9 @@ class RushieListView(ListView):
     def dispatch(self, request, *args, **kwargs):
         return super(RushieListView, self).dispatch(request, *args, **kwargs)
 
+    def get_queryset(self):
+        return Rushie.objects.all().order_by('username')
+
 class RushieDetailView(DetailView):
     model = Rushie
     template_name = 'rushie/detail.html'

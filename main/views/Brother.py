@@ -57,6 +57,10 @@ class BrotherListView(ListView):
     def dispatch(self, *args, **kwargs):
         return super(BrotherListView, self).dispatch(*args, **kwargs)
 
+    def get_queryset(self):
+        return Brother.objects.all().order_by('username')
+
+
 class BrotherDetailView(DetailView):
     model = Brother
     template_name = 'brother/detail.html'
