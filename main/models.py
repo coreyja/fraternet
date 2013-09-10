@@ -93,8 +93,8 @@ class Brother(Profile):
 
 class Major(models.Model):
 
-    title = models.CharField(max_length=20, blank=False, null=False)
-    abbrev = models.CharField(max_length=5)
+    title = models.CharField(max_length=50, blank=False, null=False)
+    abbrev = models.CharField(max_length=10)
 
     def __unicode__(self):
         return self.title
