@@ -5,7 +5,8 @@
       events: {
         url: '/events/events/',
         type: 'GET'
-      }
+      },
+      ignoreTimezone: false
     });
   });
 

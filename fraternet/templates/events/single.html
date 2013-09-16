@@ -2,8 +2,15 @@
 {% load fraternet_filters %}
 
 {% block content %}
-
-    <div class="col-sm-offset-3 col-sm-6">
+    <div class="col-sm-6">
+        {% if object.picture %}
+        <img src="{{ object.picture.url }}" >
+        {% endif %}
+    </div>
+    <div class="col-sm-6">
+        {% if perms.events.can_edit %}
+            <a href="{% url 'edit_event' pk=object.id %}" class="btn btn-default" id="edit-button">Edit</a>
+        {% endif %}
         <h1>{{ object.name }}</h1>
 
         <p>Start Time: {{ object.start_datetime }}</p>

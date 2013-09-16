@@ -6,6 +6,7 @@ from datetime import datetime
 import json
 
 from .models import Event
+from .forms import EventForm
 
 
 class CalendarView(TemplateView):
@@ -39,3 +40,12 @@ class EventsView(View):
 class SingleEventView(DetailView):
     model = Event
     template_name = 'events/single.html'
+
+
+class EditEventView(UpdateView):
+    model = Event
+    template_name = 'events/edit.html'
+    form_class = EventForm
+
+    def get_success_url(self):
+        return reverse('single_event', kwargs={'pk': self.object.id})
