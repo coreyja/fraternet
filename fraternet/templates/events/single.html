@@ -16,8 +16,10 @@
         <p>Start Time: {{ object.start_datetime }}</p>
         <p>End Time: {{ object.end_datetime }}</p>
 
+        {% if object.description %}
         <h3>Description</h3>
         <p>{{ object.description }}</p>
+        {% endif %}
     </div>
 
 
