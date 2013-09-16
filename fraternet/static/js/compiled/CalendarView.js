@@ -9,7 +9,7 @@
         }, {
           url: '/rush/closedrush/',
           type: 'GET',
-          color: 'red'
+          color: '#cc0000'
         }
       ],
       ignoreTimezone: false
