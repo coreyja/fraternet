@@ -8,7 +8,7 @@
         {% endif %}
     </div>
     <div class="col-sm-6">
-        {% if perms.events.can_edit %}
+        {% if perms.events.change_event %}
             <a href="{% url 'edit_event' pk=object.id %}" class="btn btn-default" id="edit-button">Edit</a>
         {% endif %}
         <h1>{{ object.name }}</h1>

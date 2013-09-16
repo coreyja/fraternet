@@ -52,7 +52,7 @@ class EditEventView(UpdateView):
     def get_success_url(self):
         return reverse('single_event', kwargs={'pk': self.object.id})
 
-    @method_decorator(permission_required('events.can_edit'))
+    @method_decorator(permission_required('events.change_event'))
     def dispatch(self, *args, **kwargs):
         return super(EditEventView, self).dispatch(*args, **kwargs)
 
