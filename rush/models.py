@@ -54,3 +54,13 @@ class Rushie(Profile):
 class RushieComment(Comment):
 
     commented_on = models.ForeignKey(Rushie, related_name='comments')
+
+
+from events.models import Event
+
+
+class ClosedRush(Event):
+    pass
+
+class RushEvent(Event):
+    pass

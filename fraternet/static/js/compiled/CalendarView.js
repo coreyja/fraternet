@@ -2,10 +2,16 @@
 (function() {
   jQuery(function() {
     return $('#calendar').fullCalendar({
-      events: {
-        url: '/events/events/',
-        type: 'GET'
-      },
+      eventSources: [
+        {
+          url: '/rush/rush-events/',
+          type: 'GET'
+        }, {
+          url: '/rush/closedrush/',
+          type: 'GET',
+          color: 'red'
+        }
+      ],
       ignoreTimezone: false
     });
   });

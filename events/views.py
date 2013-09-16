@@ -16,6 +16,7 @@ class CalendarView(TemplateView):
 
 
 class EventsView(View):
+    model = Event
 
     def get(self, request, *args, **kwargs):
         start = int(request.GET['start'])
@@ -24,7 +25,7 @@ class EventsView(View):
         start = datetime.fromtimestamp(start)
         end = datetime.fromtimestamp(end)
 
-        events = Event.objects.filter(start_datetime__gte=start, end_datetime__lte=end)
+        events = self.model.objects.filter(start_datetime__gte=start, end_datetime__lte=end)
 
         events_json = []
 
