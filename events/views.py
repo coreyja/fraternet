@@ -58,7 +58,9 @@ class EditEventView(UpdateView):
         return super(EditEventView, self).dispatch(*args, **kwargs)
 
 class CreateEventView(CreateView):
-    model = Event
+    from rush.models import RushEvent #Should fix later. But for Umsted to know the url, this hack will work
+
+    model = RushEvent
     template_name = 'events/create.html'
     form_class = EventForm
 
