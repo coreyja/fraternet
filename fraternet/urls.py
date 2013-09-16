@@ -3,7 +3,7 @@ from django.contrib import admin as django_admin
 from django.contrib.auth.decorators import login_required
 
 from main.forms import LoginForm
-from main.views.common import dashboard_view, ProfileView, ProfileEditView, GeneralInfoView, ContactUsView
+from main.views.common import HomepageView, ProfileView, ProfileEditView, GeneralInfoView, ContactUsView
 from main.views.admin import admin_view
 from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetailView, BrotherEditView
 
@@ -48,7 +48,7 @@ urlpatterns = patterns('',
     url(r'^contact/$', ContactUsView.as_view(), name="contact"),
 
     #Homepage/Landing Page. Will probably be dynamic later
-    url(r'^$', dashboard_view, name='dashboard'),
+    url(r'^$', HomepageView.as_view(), name='dashboard'),
 
     url(r"%s(?P<path>.*)$" % settings.MEDIA_URL[1:], "django.views.static.serve", {"document_root": settings.MEDIA_ROOT,}),
 )

@@ -12,13 +12,9 @@ from main.forms import BrotherForm
 from rush.models import Rushie
 from rush.forms import RushieEditForm
 
-def dashboard_view(request):
-    return redirect('calendar_view')
 
-    # if request.user.is_authenticated():
-    #     return render_to_response('dashboard.html', context_instance=RequestContext(request))
-    # else:
-    #     return render_to_response('static/landing.html', context_instance=RequestContext(request))
+class HomepageView(TemplateView):
+    template_name = 'home.html'
 
 
 class ProfileView(DetailView):
