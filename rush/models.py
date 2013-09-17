@@ -21,6 +21,8 @@ class Rushie(Profile):
     phone = models.CharField(max_length=10, blank=True, null=True)
     grad_year = models.IntegerField(blank=True, null=True)
 
+    mailbox_number = models.CharField(max_length=8, blank=True, null=True)
+
     majors = SortedManyToManyField('main.Major', related_name='rushies', blank=True, null=True)
 
     objects = RushieManager()

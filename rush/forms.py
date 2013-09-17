@@ -39,6 +39,7 @@ class RushieEditForm(forms.ModelForm):
 
         self.fields['phone'].label = 'Phone Number'
         self.fields['grad_year'].label = 'Expected Graduation Year'
+        self.fields['mailbox_number'].label = "Mailbox Number"
 
         if 'picture' in self.fields:
             self.fields['picture'].label = 'Profile Picture'
@@ -47,6 +48,8 @@ class RushieEditForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Submit', css_class="btn btn-primary btn-large"))
 
         self.helper['username'].wrap(AppendedText, "@%s" % FRATERNET_EMAIL_DOMAIN)
+        self.helper['mailbox_number'].wrap(PrependedText, "CM")
+
 
 
 class RushieCreateForm(RushieEditForm):
