@@ -7,9 +7,18 @@
         {% if object.picture %}<img src="{{ object.picture.url }}" >{% endif %}
     </div>
     <div class="col-sm-6">
-        {% if perms.rush.can_edit%}
-            <a href="{% url 'edit_rushie' username=object.username %}" class="btn btn-default" id="edit-button">Edit</a>
-        {% endif %}
+        <div id="admin-buttons">
+            {% if perms.rush.can_edit%}
+                <a href="{% url 'edit_rushie' username=object.username %}" class="btn btn-default" id="edit-button">Edit</a>
+            {% endif %}
+            {% if perms.rush.can_delete %}
+                <form method="post" action="{% url 'delete_rushie' username=object.username %}" id="delete-form">
+                    {% csrf_token %}
+                    <button name="delete" class="btn btn-default" value="yes">Delete</button>
+                </form>
+            {% endif %}
+        </div>
+
 
         <h2>{{ object.name }}</h2>
 

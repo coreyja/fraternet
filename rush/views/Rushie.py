@@ -1,6 +1,7 @@
 from django.views.generic import DetailView, UpdateView, CreateView, DeleteView, ListView, FormView, View
 from django.shortcuts import render_to_response, redirect
 from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 import json
@@ -78,6 +79,18 @@ class RushieEditView(UpdateView):
 
     def get_object(self, queryset=None):
         return Rushie.objects.get(username=self.kwargs['username'])
+
+
+class RushieDeleteView(DeleteView):
+    model = Rushie
+
+    template_name = 'rushie/confirm_delete.html'
+
+    def get_object(self, queryset=None):
+        return Rushie.objects.get(username=self.kwargs['username'])
+
+    def get_success_url(self):
+        return reverse('list_rushies')
 
 
 

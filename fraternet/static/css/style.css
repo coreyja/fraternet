@@ -67,7 +67,11 @@ div#create-comment button.submit {
   margin-top: 15px;
   float: right;
 }
-a#edit-button {
+div#admin-buttons {
+  overflow: hidden;
+}
+a#edit-button,
+form#delete-form {
   float: right;
   margin-right: 20px;
 }
