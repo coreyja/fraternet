@@ -8,7 +8,10 @@
     </div>
     <div class="col-sm-6">
 
-        <a href="{% url 'edit_profile' %}" class="btn btn-default" id="edit-button">Edit</a>
+        <div id="admin-buttons">
+            <a href="{% url 'change_password' %}" class="btn btn-default" id="change-password">Change Password</a>
+            <a href="{% url 'edit_profile' %}" class="btn btn-default" id="edit-button">Edit</a>
+        </div>
 
 
         <h2>{{ object.name }}</h2>

@@ -71,7 +71,8 @@ div#admin-buttons {
   overflow: hidden;
 }
 a#edit-button,
-form#delete-form {
+form#delete-form,
+a#change-password {
   float: right;
   margin-right: 20px;
 }

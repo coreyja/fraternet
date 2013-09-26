@@ -1,8 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin as django_admin
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse_lazy
 
-from main.forms import LoginForm
+from main.forms import LoginForm, ChangePasswordForm
 from main.views.common import HomepageView, ProfileView, ProfileEditView, GeneralInfoView, ContactUsView
 from main.views.admin import admin_view
 from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetailView, BrotherEditView
@@ -43,6 +44,11 @@ urlpatterns = patterns('',
 
     url(r'^profile/$', ProfileView.as_view(), name="profile"),
     url(r'^profile/edit/$', ProfileEditView.as_view(), name="edit_profile"),
+    # url(r'^profile/change-password/$', ChangePasswordView.as_view(), name="change_password"),
+    url(r'^profile/change-password/$', 'django.contrib.auth.views.password_change',
+        {'template_name': 'profile/change_password.html', 'post_change_redirect': reverse_lazy('profile'), 'password_change_form': ChangePasswordForm},
+        name="change_password"),
+
 
     url(r'^general-info/$', GeneralInfoView.as_view(), name="general-info"),
     url(r'^contact/$', ContactUsView.as_view(), name="contact"),
