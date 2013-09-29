@@ -11,7 +11,9 @@
             {% endfor %}
 
 
-        <div class="panel panel-default">
+
+        </div>
+         <div class="panel panel-default col-sm-12">
                 <div id="create-comment" class="panel-body">
                     <form action="./comment/" method="post">
                         {% csrf_token %}
@@ -21,6 +23,5 @@
                     </form>
                 </div>
             </div>
-        </div>
 
 {% endblock %}
