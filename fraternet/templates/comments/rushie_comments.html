@@ -10,18 +10,16 @@
                 {% include "comments/single_comment.html" %}
             {% endfor %}
 
-
-
         </div>
-         <div class="panel panel-default col-sm-12">
-                <div id="create-comment" class="panel-body">
-                    <form action="./comment/" method="post">
-                        {% csrf_token %}
-                        <textarea class="comment form-control" rows="3" name="comment" placeholder="Type Your Comment Here"></textarea>
+        <div class="panel panel-default col-sm-12">
+            <div id="create-comment" class="panel-body">
+                <form action="./comment/" method="post">
+                    {% csrf_token %}
+                    <textarea class="comment form-control" rows="3" name="comment" placeholder="Type Your Comment Here"></textarea>
 
-                        <button type="button" class="btn submit"><span class="glyphicon glyphicon-comment"></span> Comment</button>
-                    </form>
-                </div>
+                    <button type="button" class="btn submit"><span class="glyphicon glyphicon-comment"></span> Comment</button>
+                </form>
             </div>
+        </div>
 
 {% endblock %}
