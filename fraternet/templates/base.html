@@ -35,7 +35,7 @@
                         <li><a href="{% url 'list_brothers' %}">Brothers</a></li>
 
                         {% if user.brother %}
-                            <li><a href="{% url 'list_rushies' %}">Rushies</a></li>
+                            <li><a href="{% url 'list_rushies' %}">Rushees</a></li>
                         {% endif %}
 
                         <li><a href="{% url 'calendar_view' %}">Events</a></li>
@@ -44,7 +44,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'contact' %}">Contact Us</a></li>
                     {% if not user.rushie %}
-                        <li><a href="{% url 'create_rushie' %}">Rushie Sign-Up</a></li>
+                        <li><a href="{% url 'create_rushie' %}">Rushee Sign-Up</a></li>
                     {% endif %}
                     {% if user.is_authenticated %}
                         <li class="dropdown">

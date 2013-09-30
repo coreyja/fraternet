@@ -15,8 +15,8 @@ class RushieManager(ProfileManager):
 
 class Rushie(Profile):
     class Meta:
-        verbose_name = "Rushie"
-        verbose_name_plural = "Rushies"
+        verbose_name = "Rushee"
+        verbose_name_plural = "Rushees"
 
     phone = models.CharField(max_length=10, blank=True, null=True)
     grad_year = models.IntegerField(blank=True, null=True)
