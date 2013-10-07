@@ -17,6 +17,14 @@
                     <button name="delete" class="btn btn-default" value="yes">Delete</button>
                 </form>
             {% endif %}
+            <div id="nav-buttons">
+            {% if prev_rushee %}
+                <a class="btn btn-default" href="{% url 'rushie_detail' username=prev_rushee.username %}">Previous</a>
+            {% endif %}
+            {% if next_rushee %}
+                <a class="btn btn-default" href="{% url 'rushie_detail' username=next_rushee.username %}">Next</a>
+            {% endif %}
+            </div>
         </div>
 
 

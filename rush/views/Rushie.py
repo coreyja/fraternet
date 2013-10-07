@@ -65,6 +65,26 @@ class RushieDetailView(DetailView):
     def dispatch(self, request, *args, **kwargs):
         return super(RushieDetailView, self).dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super(RushieDetailView, self).get_context_data(**kwargs)
+
+        rushees = Rushie.objects.all().order_by('username')
+
+        prev = None
+        next = False
+
+        for r in rushees:
+            if next:
+                context['next_rushee'] = r
+                break
+            if r.id == self.object.id:
+                context['prev_rushee'] = prev
+                next = True
+
+            prev = r
+
+        return context
+
     def get_object(self, queryset=None):
         return Rushie.objects.get(username=self.kwargs['username'])
 

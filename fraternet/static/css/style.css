@@ -72,7 +72,8 @@ div#admin-buttons {
 }
 a#edit-button,
 form#delete-form,
-a#change-password {
+a#change-password,
+div#nav-buttons {
   float: right;
   margin-right: 20px;
 }
