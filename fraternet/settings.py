@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'rush',
     'comments',
     'events',
+    'vote',
     #Other Apps
     'south',
     'crispy_forms',

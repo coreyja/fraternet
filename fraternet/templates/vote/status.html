@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load fraternet_filters %}
+
+{% block content %}
+    <div class="col-sm-12">
+        <h1>Open Polls</h1>
+    {% if polls %}
+        {% for poll in polls %}
+            <div class="poll col-sm-12">
+                <div class="col-sm-6">
+                    <h2>{{ poll.rushee.name }}</h2>
+                    {% if poll.rushee.picture %}<img src="{{ poll.rushee.picture.url }}" >{% endif %}
+                </div>
+                <div class="col-sm-6">
+                    <div id="admin-buttons">
+
+                    </div>
+                    <p>Total Number of Votes: {{ poll.votes.count }}</p>
+                    <p>Yes Votes: {{ poll.votes_yes.count }}</p>
+                    <p>No Votes: {{ poll.votes_no.count }}</p>
+
+                    {% if poll.votes.count %}
+                    <div class="graph">
+                        <div class="graph-bar" style="width: {{ poll.yes_percent }}%;">
+                            Yes: {{ poll.yes_percent }}%
+                        </div>
+                        <div class="graph-bar graph-bar-alt" style="width: {{ poll.no_percent }}%;">
+                            No: {{ poll.no_percent }}%
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No open polls exist</p>
+    {% endif %}
+    </div>
+{% endblock %}

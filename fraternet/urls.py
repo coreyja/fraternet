@@ -10,6 +10,7 @@ from main.views.Brother import BrotherCreateView, BrotherListView, BrotherDetail
 
 from rush import urls as rush_urls
 from events import urls as event_urls
+from vote import urls as vote_urls
 
 import settings
 
@@ -29,6 +30,9 @@ urlpatterns = patterns('',
     #Rush Urls
     url(r'^rush/', include(rush_urls)),
     url(r'^events/', include(event_urls)),
+
+    #Voting Urls import
+    url(r'^vote/', include(vote_urls)),
 
 
     url(r'^login/$', 'django.contrib.auth.views.login',{'authentication_form': LoginForm}, name='login'),

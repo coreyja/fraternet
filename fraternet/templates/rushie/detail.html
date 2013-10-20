@@ -17,6 +17,12 @@
                     <button name="delete" class="btn btn-default" value="yes">Delete</button>
                 </form>
             {% endif %}
+            {% if perms.vote.can_create %}
+                <form method="post" action="{% url 'vote_status' %}" id="delete-form">
+                    {% csrf_token %}
+                    <button name="create" class="btn btn-default" value="{{ object.id }}">Create Poll</button>
+                </form>
+            {% endif %}
             <div id="nav-buttons">
             {% if prev_rushee %}
                 <a class="btn btn-default" href="{% url 'rushie_detail' username=prev_rushee.username %}">Previous</a>
