@@ -13,19 +13,44 @@
                 </div>
                 <div class="col-sm-6">
                     <div id="admin-buttons">
-
+                        {% if perms.vote.can_close %}
+                            <form method="post" action="{% url 'vote_status' %}">
+                                {% csrf_token %}
+                                <button name="close" class="btn btn-default" value="{{ poll.rushee.id }}">Close Poll</button>
+                            </form>
+                        {% endif %}
+                        {% if perms.vote.can_clear %}
+                            <form method="post" action="{% url 'vote_status' %}">
+                                {% csrf_token %}
+                                <button name="clear" class="btn btn-default" value="{{ poll.rushee.id }}">Clear Poll</button>
+                            </form>
+                        {% endif %}
                     </div>
                     <p>Total Number of Votes: {{ poll.votes.count }}</p>
                     <p>Yes Votes: {{ poll.votes_yes.count }}</p>
                     <p>No Votes: {{ poll.votes_no.count }}</p>
 
                     {% if poll.votes.count %}
+                    <h2>Percentages of Votes:</h2>
                     <div class="graph">
                         <div class="graph-bar" style="width: {{ poll.yes_percent }}%;">
                             Yes: {{ poll.yes_percent }}%
                         </div>
                         <div class="graph-bar graph-bar-alt" style="width: {{ poll.no_percent }}%;">
                             No: {{ poll.no_percent }}%
+                        </div>
+                    </div>
+
+                    <h2>Percentages of Brothers:</h2>
+                    <div class="graph">
+                        <div class="graph-bar" style="width: {{ poll.all_bro_percentages.0 }}%;">
+                            Yes: {{ poll.all_bro_percentages.0 }}%
+                        </div>
+                        <div class="graph-bar graph-bar-alt" style="width: {{ poll.all_bro_percentages.1 }}%;">
+                            No: {{ poll.all_bro_percentages.1 }}%
+                        </div>
+                        <div class="graph-bar graph-bar-alt-2" style="width: {{ poll.all_bro_percentages.2 }}%;">
+                            No Vote: {{ poll.all_bro_percentages.2 }}%
                         </div>
                     </div>
                     {% endif %}

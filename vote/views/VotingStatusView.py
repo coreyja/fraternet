@@ -1,3 +1,4 @@
+from django.template import RequestContext
 from django.utils.decorators import method_decorator
 from django.views.generic import View
 from django.shortcuts import render_to_response, redirect
@@ -20,24 +21,30 @@ class VotingStatusView(View):
             'polls': polls,
         }
 
-        return render_to_response(self.template_name, context)
+        return render_to_response(self.template_name, context, context_instance=RequestContext(request))
 
     def post(self, request, *args, **kwargs):
         if 'create' in request.POST:
             rushee_id = request.POST['create']
             rushee = Rushie.objects.get(id=rushee_id)
 
-            Poll.objects.create(rushee=rushee)
+            if Poll.objects.filter(rushee_id=rushee).count() == 0:
+                Poll.objects.create(rushee=rushee)
+            else:
+                p = Poll.objects.get(rushee_id=rushee)
+                p.votes.clear()
+                p.open = True
+                p.save()
 
         if 'close' in request.POST:
             rushee_id = request.POST['close']
 
-            Poll.objects.filter(rushee_id=rushee).update(open=False)
+            Poll.objects.filter(rushee_id=rushee_id).update(open=False)
 
         if 'clear' in request.POST:
             rushee_id = request.POST['clear']
 
-            p = Poll.objects.get(rushee_id=rushee)
+            p = Poll.objects.get(rushee_id=rushee_id)
             p.votes.clear()
 
         return self.get(request, *args, **kwargs)
