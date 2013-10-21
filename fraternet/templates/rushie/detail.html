@@ -18,7 +18,7 @@
                 </form>
             {% endif %}
             {% if perms.vote.can_create %}
-                <form method="post" action="{% url 'vote_status' %}">
+                <form method="post" action="{% url 'vote_status' %}" target="_blank">
                     {% csrf_token %}
                     <button name="create" class="btn btn-default" value="{{ object.id }}">Create Poll</button>
                 </form>
